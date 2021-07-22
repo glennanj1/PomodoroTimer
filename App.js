@@ -50,7 +50,7 @@ const ProfileScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
