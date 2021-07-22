@@ -14,9 +14,10 @@ export default function App() {
         <Stack.Screen 
           name="Home"
           component={HomeScreen}
-          option={{ title: 'Pomodoro Timer' }}
         />
-        <Stack.Screen name="Timer" component={Timer} />
+        <Stack.Screen 
+          name="Timer" 
+          component={Timer} />
       </Stack.Navigator>
     </NavigationContainer>
     
