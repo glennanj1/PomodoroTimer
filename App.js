@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -26,16 +26,16 @@ export default function App() {
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-          <Button 
+          <Pressable 
             style={styles.button}
             onPress={() => {
               alert('This is Sick!')
               navigation.navigate('Profile', { name: 'Pomodoro' })
             }}
             title="Pomodoro Timer"
-            />
-          <Text>Your the best</Text>
-          <Text>The Very Best</Text>
+            >
+              <Text style={styles.text}>Timer</Text>
+            </Pressable>
           <StatusBar style="auto" />
       </View>
   )
@@ -55,6 +55,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    color: 'red'
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+
+  },
+  text: {
+    color: 'white'
   }
+  
 });
