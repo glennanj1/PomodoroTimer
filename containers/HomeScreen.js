@@ -6,7 +6,8 @@ import { StatusBar } from 'expo-status-bar';
 export default function HomeScreen ({ navigation }) {
     return (
         <View style={styles.container} >
-            <Text style={styles.header}>Welcome to Pomodoro Timer</Text>
+              <Text style={styles.header}>Welcome to Pomodoro Timer</Text>
+            
             <Text style={styles.header2}>Click below to get started!</Text>
            
             <Pressable 
@@ -19,7 +20,9 @@ export default function HomeScreen ({ navigation }) {
               </Pressable>
         
             <StatusBar style="auto" />
+
         </View>
+
     )
   }
   
@@ -27,7 +30,6 @@ export default function HomeScreen ({ navigation }) {
     container: {
       flex: 1,
       backgroundColor: 'white',
-      backgroundImage: 'url(https://media.giphy.com/media/3oxRmvU3GAJay6F60g/giphy.gif)',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -44,19 +46,15 @@ export default function HomeScreen ({ navigation }) {
       color: 'white'
     },
     header: {
-        border: 'solid',
         backgroundColor: 'red',
         marginBottom: '30px',
-        fontSize: '20px',
-        fontWeight: 'bold',
-        letterSpacing: '1px',
-        fontFamily: 'roboto'
+        fontWeight: 'bold'    
     },
     header2: {
         marginBottom: '10px',
-        fontSize: '15px',
         fontWeight: '500',
     
-    }
+    },
+  
     
   });
