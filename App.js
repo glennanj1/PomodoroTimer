@@ -14,10 +14,32 @@ export default function App() {
         <Stack.Screen 
           name="Home"
           component={HomeScreen}
+          options={{
+          title: 'Welcome',
+          headerStyle: {
+            backgroundColor: 'grey',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 40,
+          },
+        }}
         />
         <Stack.Screen 
           name="Timer" 
-          component={Timer} />
+          component={Timer}
+          options={{
+          title: 'Timer',
+          headerStyle: {
+            backgroundColor: 'grey',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 40,
+          },
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
     
