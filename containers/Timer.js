@@ -1,31 +1,92 @@
-import React from 'react'
-import { Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import ConfettiCannon from 'react-native-confetti-cannon';
+
+
 
 export default function Timer() {
+
+    let [pressed, setPressed] = useState(false);
+    let [time, setTime] = useState(1200);
+
+    let startTimer = () => {
+        setInterval(() => {
+            while (time > 0) {
+                let t = time;
+                t -= 1;
+                setTime(t);
+            }
+        }, 1000)
+    }
+
     return (
-        <Text>PomodoroTimer</Text>
+        <View style={styles.container} >
+            {pressed ? (<ConfettiCannon count={200} origin={{x: -10, y: 0}} />) : null }
+
+            
+            <Text style={styles.header}>Start</Text>
+            
+            <Text style={styles.header}>{time}</Text>
+     
+            <Pressable 
+              style={styles.button}
+              onPress={() => {
+                //start timer
+                setPressed(true);
+                startTimer();
+              }}
+              >
+                <Text style={styles.text}>Begin 🏁</Text>
+              </Pressable>
+        
+            <StatusBar style="auto" />
+
+        </View>
     )
 }
 
-// const styles = StyleSheet.create({
-//     container: {
-//       flex: 1,
-//       backgroundColor: 'white',
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//     },
-//     button: {
-//       alignItems: 'center',
-//       justifyContent: 'center',
-//       paddingVertical: 12,
-//       paddingHorizontal: 32,
-//       borderRadius: 4,
-//       elevation: 3,
-//       backgroundColor: 'black',
-  
-//     },
-//     text: {
-//       color: 'white'
-//     }
-    
-//   });
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'grey',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      height: '100%',
+      
+    },
+    button: {
+      position: 'absolute',
+      bottom: '10%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      elevation: 100,
+      fontSize: 40,
+      borderRadius: 10,
+      backgroundColor: 'darkgrey',
+      margin: 10, 
+      padding: 10,
+    },
+    text: {
+      color: 'white',
+      fontSize: 40,
+      fontWeight: 'bold',
+    },
+    header: {
+        fontWeight: 'bold',
+        width: '80%',
+        fontSize: 50,
+        padding: 10, 
+        borderColor: 'black',
+        borderWidth: 2,
+        borderRadius: 10,
+        textAlign: 'center',
+    },
+    header2: {
+        marginBottom: 10,
+        fontWeight: '500',
+        fontSize: 20,
+        padding: 20, 
+    }, 
+  });
