@@ -20,7 +20,9 @@ export default function Timer() {
                 clearInterval(timer);
             };
         } else if (stopped) {
-            clearInterval(timer);
+            console.log('stopped');
+            setTime(time);
+            setPressed(false);
         }
     });
 
@@ -33,15 +35,32 @@ export default function Timer() {
             
             <Text style={styles.header}>{(Math.floor(time / 60)+':'+( time - Math.floor(time / 60) * 60))}</Text>
      
-            <Pressable 
-              style={styles.button}
-              onPress={() => {
-                //start timer
-                setPressed(true);
-              }}
-              >
-                {pressed ? (<Text style={styles.text}>Stop 🛑</Text>):(<Text style={styles.text}>Begin 🏁</Text>)}
-              </Pressable>
+            {pressed ? (
+                <Pressable 
+                style={styles.button}
+                onPress={() => {
+                    //start timer
+                    setPressed(false);
+                    setStopped(true);
+                    setTime(time);
+                }}
+                >
+                    <Text style={styles.text}>Stop 🛑</Text>
+                </Pressable>
+            ) : (
+                <Pressable 
+                style={styles.button}
+                onPress={() => {
+                    //start timer
+                    setPressed(true);
+                }}
+                >
+                <Text style={styles.text}>Begin 🏁</Text>
+            </Pressable>   
+            )}
+
+
+            
         
             <StatusBar style="auto" />
 
