@@ -17,7 +17,7 @@ export default function HomeScreen ({ navigation }) {
               }}
               >
                 <Text style={styles.text}>Enter</Text>
-              </Pressable>
+            </Pressable>
         
             <StatusBar style="auto" />
 
