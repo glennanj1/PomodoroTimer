@@ -57,10 +57,7 @@ export default function Timer() {
                 >
                 <Text style={styles.text}>Begin 🏁</Text>
             </Pressable>   
-            )}
-
-
-            
+            )}         
         
             <StatusBar style="auto" />
 

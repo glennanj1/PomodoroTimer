@@ -5,7 +5,6 @@ export default function CountDown() {
     return (
         <View>
             <Text>Test<Text />
-        </View>
-        
+        </View>   
     )
 }
