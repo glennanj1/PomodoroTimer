@@ -9,35 +9,38 @@ export default function Timer() {
 
     let [pressed, setPressed] = useState(false);
     let [time, setTime] = useState(1200);
+    let [stopped, setStopped] = useState(false);
 
-    let startTimer = () => {
-        setInterval(() => {
-            while (time > 0) {
-                let t = time;
-                t -= 1;
-                setTime(t);
-            }
-        }, 1000)
-    }
+    useEffect(() => {
+        if (pressed) {
+            let timer = setInterval(() => {
+                setTime(time - 1);
+            }, 1000);
+            return ()=> {
+                clearInterval(timer);
+            };
+        } else if (stopped) {
+            clearInterval(timer);
+        }
+    });
 
     return (
         <View style={styles.container} >
             {pressed ? (<ConfettiCannon count={200} origin={{x: -10, y: 0}} />) : null }
 
             
-            <Text style={styles.header}>Start</Text>
+            {pressed ? (<Text style={styles.header3}>▶️</Text>):(<Text style={styles.header3}>⏸</Text>)}
             
-            <Text style={styles.header}>{time}</Text>
+            <Text style={styles.header}>{(Math.floor(time / 60)+':'+( time - Math.floor(time / 60) * 60))}</Text>
      
             <Pressable 
               style={styles.button}
               onPress={() => {
                 //start timer
                 setPressed(true);
-                startTimer();
               }}
               >
-                <Text style={styles.text}>Begin 🏁</Text>
+                {pressed ? (<Text style={styles.text}>Stop 🛑</Text>):(<Text style={styles.text}>Begin 🏁</Text>)}
               </Pressable>
         
             <StatusBar style="auto" />
@@ -89,4 +92,11 @@ const styles = StyleSheet.create({
         fontSize: 20,
         padding: 20, 
     }, 
+    header3: {
+        fontWeight: 'bold',
+        width: '80%',
+        fontSize: 50,
+        padding: 10, 
+        textAlign: 'center',
+    }
   });
