@@ -11,7 +11,11 @@ export default function Timer() {
     let [time, setTime] = useState(1200);
     let [stopped, setStopped] = useState(false);
 
+    let seconds = (time - Math.floor(time / 60) * 60);
+
     useEffect(() => {
+        console.log(seconds);
+        console.log(seconds.toString().length);
         if (pressed) {
             let timer = setInterval(() => {
                 setTime(time - 1);
@@ -28,12 +32,15 @@ export default function Timer() {
 
     return (
         <View style={styles.container} >
+
+            <Text style={styles.header}>Pomodoro Timer</Text>
+
             {pressed ? (<ConfettiCannon count={200} origin={{x: -10, y: 0}} />) : null }
 
             
             {pressed ? (<Text style={styles.header3}>▶️</Text>):(<Text style={styles.header3}>⏸</Text>)}
             
-            <Text style={styles.header}>{(Math.floor(time / 60)+':'+( time - Math.floor(time / 60) * 60))}</Text>
+            <Text style={styles.header}>{(Math.floor(time / 60)+':'+(seconds.toString().length === 1 ? ('0' + seconds):(seconds)))}</Text>
      
             {pressed ? (
                 <Pressable 
